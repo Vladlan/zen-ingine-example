@@ -1,0 +1,201 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "edges": [
+    {
+      "id": "e9dff9df-31d4-42f9-a318-31594751d23e",
+      "sourceId": "f4e282ff-7762-42b1-b50a-4add382d65a4",
+      "type": "edge",
+      "targetId": "5d5188ca-2230-4f72-b30e-b92e0488b4cf"
+    },
+    {
+      "id": "0de300d0-8230-4496-824a-f073cdd27a83",
+      "sourceId": "5d5188ca-2230-4f72-b30e-b92e0488b4cf",
+      "type": "edge",
+      "targetId": "5e015e59-7224-4a46-b0e5-4f20fefd2b54"
+    },
+    {
+      "id": "0abf6f35-f83f-48a9-a519-13f5f236f712",
+      "sourceId": "f4e282ff-7762-42b1-b50a-4add382d65a4",
+      "type": "edge",
+      "targetId": "9478528d-5d5f-466c-a121-2aef23f45d49"
+    },
+    {
+      "id": "f81e4627-6073-4106-828a-332f2ab27cb1",
+      "sourceId": "f4e282ff-7762-42b1-b50a-4add382d65a4",
+      "type": "edge",
+      "targetId": "be2a4a50-122c-48ed-bb4e-282c291505fe"
+    },
+    {
+      "id": "50cac5a6-83dd-46eb-9ab2-ba35f435f713",
+      "sourceId": "9478528d-5d5f-466c-a121-2aef23f45d49",
+      "type": "edge",
+      "targetId": "5e015e59-7224-4a46-b0e5-4f20fefd2b54"
+    },
+    {
+      "id": "021b523d-6983-477f-8599-5590ca1ee00b",
+      "sourceId": "be2a4a50-122c-48ed-bb4e-282c291505fe",
+      "type": "edge",
+      "targetId": "5e015e59-7224-4a46-b0e5-4f20fefd2b54"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "f4e282ff-7762-42b1-b50a-4add382d65a4",
+      "type": "inputNode",
+      "position": {
+        "x": -90,
+        "y": 320
+      },
+      "name": "Request"
+    },
+    {
+      "id": "5d5188ca-2230-4f72-b30e-b92e0488b4cf",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 110,
+        "y": 320
+      },
+      "name": "Turnover",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "field": "company.turnover",
+            "id": "5n5WAiLF14",
+            "name": "Turnover",
+            "type": "expression"
+          }
+        ],
+        "outputs": [
+          {
+            "field": "flag.turnover",
+            "id": "AF2QQVw2tK",
+            "name": "Flag",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "ovVUXdQZsH",
+            "5n5WAiLF14": "> 1_000_000",
+            "AF2QQVw2tK": "\"green\""
+          },
+          {
+            "_id": "q8-RMejhan",
+            "5n5WAiLF14": "[200_000..1_000_000]",
+            "AF2QQVw2tK": "\"amber\""
+          },
+          {
+            "_id": "KnTw6C9Ief",
+            "5n5WAiLF14": "< 200_000",
+            "AF2QQVw2tK": "\"red\""
+          },
+          {
+            "_id": "6DzkBWk3em",
+            "5n5WAiLF14": "",
+            "AF2QQVw2tK": "\"red\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "9478528d-5d5f-466c-a121-2aef23f45d49",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 110,
+        "y": 230
+      },
+      "name": "Country",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "field": "company.country",
+            "id": "_r8sU31ve4",
+            "name": "Country",
+            "type": "expression"
+          }
+        ],
+        "outputs": [
+          {
+            "field": "flag.country",
+            "id": "e4Mrbxdorq",
+            "name": "Flag",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "Kskm0oPE5q",
+            "_r8sU31ve4": "\"US\",\"IE\",\"GB\",\"CA\"",
+            "e4Mrbxdorq": "\"green\""
+          },
+          {
+            "_id": "uqwpGfVo0w",
+            "_r8sU31ve4": "\"DE\",\"FR\"",
+            "e4Mrbxdorq": "\"amber\""
+          },
+          {
+            "_id": "n7rtTyEEpJ",
+            "_r8sU31ve4": "\"BY\", \"UA\"",
+            "e4Mrbxdorq": "\"red\""
+          },
+          {
+            "_id": "TQJuBJ6oS9",
+            "_r8sU31ve4": "",
+            "e4Mrbxdorq": "\"red\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "be2a4a50-122c-48ed-bb4e-282c291505fe",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 110,
+        "y": 410
+      },
+      "name": "Type",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "field": "company.type",
+            "id": "gPsIj8c5_Q",
+            "name": "Company Type",
+            "type": "expression"
+          }
+        ],
+        "outputs": [
+          {
+            "field": "flag.companyType",
+            "id": "jRteL8eseN",
+            "name": "flag companyType",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "TFdokJ5hRN",
+            "gPsIj8c5_Q": "\"INC\",\"LTD\",\"LLC\"",
+            "jRteL8eseN": "\"green\""
+          },
+          {
+            "_id": "1fFPSmH0lK",
+            "gPsIj8c5_Q": "",
+            "jRteL8eseN": "\"amber\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "5e015e59-7224-4a46-b0e5-4f20fefd2b54",
+      "type": "outputNode",
+      "position": {
+        "x": 310,
+        "y": 320
+      },
+      "name": "Response"
+    }
+  ]
+}
